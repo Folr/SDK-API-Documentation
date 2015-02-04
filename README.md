@@ -1,4 +1,4 @@
-# Folr Busines SDK Documentation
+# Folr Business SDK Documentation
 
 This set of documentation includes:
 1. [SDK API Documentation](sdk-api.md)
