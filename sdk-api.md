@@ -9,7 +9,7 @@ There are two important elements to the Folr API:
 
 #Invoking the API: application tokens
 
-In order to use the Folr API, you need to create one or more Applications in the [Folr Business Dashboard](www.folr.com/business) via the admin menu in the left. 
+In order to use the Folr API, you need to create one or more Applications in the [Folr Business Dashboard](https://folr.com/business) via the admin menu in the left. 
 
 Each application you create contains two sets of tokens:
 
@@ -38,7 +38,7 @@ cXdGvmqgvxgo4_T_P_edft
 yCQ_jbj5xxcyBrz8z5xEcbyRTWUNxV3rAqrdGHSHw9ao
 ```
 
-*(Please note these tokens above are examples only, to retrieve your application's tokens, please log into the web dashboard at [Folr Business Dashboard](www.folr.com/business)).*
+*(Please note these tokens above are examples only, to retrieve your application's tokens, please log into the web dashboard at [Folr Business Dashboard](https://folr.com/business)).*
 
 Each application can contain one or more application users, representing users whose locations are tracked. Adding application users can either be done inside the web dashboard, or via the API.
 
@@ -57,7 +57,7 @@ Each application can contain one or more application users, representing users w
 ###Example 
 
 ```
-curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=y8-xGymM1ta63Ra3arxRxQ_G9WZTazd3TUyw8dGkayM" --data "app_username=JoeBloggs" https://staging.folr.com/api/app_users
+curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=y8-xGymM1ta63Ra3arxRxQ_G9WZTazd3TUyw8dGkayM" --data "app_username=JoeBloggs" https://folr.com/api/app_users
 ```
 
 *(remember to include the WRITE token and token secret in the header)*
@@ -106,7 +106,7 @@ Your application should take note of the **id** of the user, as it is required f
 ###Example 
 
 ```
-curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://staging.folr.com/api/app_users
+curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://folr.com/api/app_users
 ```
 
 *(remember to include the READ token and token secret in the header)*
@@ -155,7 +155,7 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 ###Example 
 
 ```
-curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://staging.folr.com/api/app_users/213
+curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://folr.com/api/app_users/213
 ```
 
 *(remember to include the READ token and token secret in the header)*
@@ -212,7 +212,7 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 ###Example 
 
 ```
-curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=y8-xGymM1ta63Ra3arxRxQ_G9WZTazd3TUyw8dGkayM" --data "app_username=JoeBloggs&captured_at=2014-07-15T17:46:51+0800&latitude=33.91864735&longitude=18.41956561&address=19A Buitengracht St, Cape Town City Centre, Cape Town&accuracy=16.0&speed=0.0&battery_level=65.0" https://staging.folr.com/api/tracking
+curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=y8-xGymM1ta63Ra3arxRxQ_G9WZTazd3TUyw8dGkayM" --data "app_username=JoeBloggs&captured_at=2014-07-15T17:46:51+0800&latitude=33.91864735&longitude=18.41956561&address=19A Buitengracht St, Cape Town City Centre, Cape Town&accuracy=16.0&speed=0.0&battery_level=65.0" https://folr.com/api/tracking
 ```
 
 *(remember to include the WRITE token and token secret in the header)*
@@ -257,7 +257,7 @@ curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=
 ###Example 
 
 ```
-curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://staging.folr.com/api/tracking?from=2014-07-15T08:00:00+08:00&to=2014-07-15T17:46:51+08:00
+curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://folr.com/api/tracking?from=2014-07-15T08:00:00+08:00&to=2014-07-15T17:46:51+08:00
 ```
 
 *(remember to include the READ token and token secret in the header)*
