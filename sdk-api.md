@@ -3,7 +3,7 @@
 There are two important elements to the Folr API:
 
 1. **Applications**: Applications are used by the API to group tracked users together. You can create as many applications as required.
-2. **Application users**: each application consists of users whose locations are tracked. They are identified through a *username*, which must be unique per user in the application.
+2. **Application users**: each application consists of app users whose locations are tracked. They are identified through a *username*, which must be unique per user in the application.
 
 
 
@@ -307,4 +307,55 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 ```
 
 
+
+
+
+##6. ```POST``` api/zones   
+
+*creates a zone*
+
+###Form Parameters
+
+ - **name** - *Name of zone*  (string, required)
+
+ - **latitude** - *Latitude of zone center*  (string, required)
+
+ - **longitude** - *Longitude of zone center*  (string, required)
+
+ - **radius** - *Radius of zone in metres*  (float, required)
+
+###Example 
+
+```
+curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=y8-xGymM1ta63Ra3arxRxQ_G9WZTazd3TUyw8dGkayM" --data "name=Zone1&latitude=33.91864735&longitude=18.41956561&radius=2500" https://folr.com/api/zones
+```
+
+*(remember to include the WRITE token and token secret in the header)*
+
+###Return JSON
+
+**200 OK**
+
+```
+    {
+      "zone": {
+      "id": 25,
+      "name": "Zone1",
+      "latitude": "33.91864735",
+      "longitude": "18.41956561",
+      "radius": 2500.0,
+      "address": null,
+      "company_id": 12
+    }
+```
+
+
+**400 Bad Request**
+
+```
+{
+  "error": "general_error",
+  "message": "Validation failed: Invalid token"
+}
+```
 
