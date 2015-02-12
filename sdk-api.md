@@ -5,13 +5,11 @@ There are two important elements to the Folr API:
 1. **Applications**: Applications are used by the API to group tracked users together. You can create as many applications as required.
 2. **Application users**: each application consists of app users whose locations are tracked. They are identified through a *username*, which must be unique per user in the application.
 
-
-
 #Invoking the API: application tokens
 
-In order to use the Folr API, you need to create one or more Applications in the [Folr Business Dashboard](https://folr.com/business) via the admin menu in the left. 
+In order to use the Folr API, you need to create one or more Applications in the [Folr Business Dashboard](https://folr.com/) via the 'Applications' menu in the left. 
 
-Each application you create contains two sets of tokens:
+Each application that you create contains two sets of tokens:
 
 * a token and secret for **writing** data to the API
 * a token and secret for **reading** data from the API.
@@ -38,9 +36,12 @@ cXdGvmqgvxgo4_T_P_edft
 yCQ_jbj5xxcyBrz8z5xEcbyRTWUNxV3rAqrdGHSHw9ao
 ```
 
-*(Please note these tokens above are examples only, to retrieve your application's tokens, please log into the web dashboard at [Folr Business Dashboard](https://folr.com/business)).*
+*(Please note these tokens above are examples only, to retrieve your application's tokens, please log into the web dashboard at [Folr Dashboard](https://folr.com/)).*
 
-Each application can contain one or more application users, representing users whose locations are tracked. Adding application users can either be done inside the web dashboard, or via the API.
+Each application then consists of one or more application **users**, representing each user whose locations are tracked via the API. 
+
+Adding application users can either be done inside the web dashboard, or via the API.
+
 
 ##API Methods
 
@@ -70,23 +71,13 @@ curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=
 app_user: 
   {
     "id": 213,
-    "country_code": null,
-    "phone_number": null,
-    "email": null,
-    "name": null,
-    "avatar": null,
-    "photo": null,
     "state": "online",
-    "has_password": false,
-    "terms_accepted_at": null,
-    "email_verified": true,
-    "type": "AppUser",
     "app_username": "JoeBloggs",
     "app_id": 459,
+    "last_location": null,
     "company_id": 12
   }
 ```
-
 
 **400 Bad Request**
 
@@ -97,7 +88,12 @@ app_user:
 }
 ```
 
-Your application should take note of the **id** of the user, as it is required for editing or deleting the user.
+*app_user fields explained:*
+ - id : the Folr id of the app user
+ - state : "online" means the user's location is currently being tracked; "offline" means the user is not currently being tracked
+ - app_username : the application user's unique name or ID
+ - last_location : the user's latest tracked location
+ - company_id : the id of the company that the application user belongs to.
 
 ##2. ```GET``` api/app_users   
 
@@ -119,22 +115,46 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 {
   "app_users": [
     {
-      "id": 213,
-      "country_code": null,
-      "phone_number": null,
-      "email": null,
-      "name": null,
-      "avatar": null,
-      "photo": null,
-      "state": "offline",
-      "has_password": false,
-      "terms_accepted_at": null,
-      "email_verified": true,
-      "type": "AppUser",
-      "app_username": "JoeBloggs",
-      "app_id": 459,
-      "company_id": 12
-    }
+      "id": 12345,
+      "state": "online",
+      "app_username": "app user 1",
+      "app_id": 103312,
+      "company_id": 49,
+      "last_location": null
+    },
+    {
+      "id": 45678,
+      "state": "online",
+      "app_username": "app user 2",
+      "app_id": 103312,
+      "company_id": 49,
+      "last_location": {
+          id = 475,
+          user_id = 45678
+          latitude = "-33.987699",
+          longitude = "18.483523",
+          captured_at = "2015-02-12T15:18:42+02:00",
+          captured_at_time = "2015-02-12T15:18:42",
+          captured_at_zone = "+02:00",
+          created_at = "2015-02-12T13:18:42+00:00",
+          address = "115 Garfield Rd, Claremont, Cape Town",
+          accuracy = "126.0",
+          speed = "0.0",
+          duration = 35,
+          battery_level = "43.0",
+          zones
+          [
+            {
+              id = "1",
+              name = "zone 1"
+            },
+            {
+              id = "2",
+              name = "zone 2"
+            }
+          ]
+        }
+      }
   ]
 }
 ```
@@ -147,6 +167,22 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
   "message": ""
 }
 ```
+
+*last_location fields explained:*
+ - id : the location log id
+ - user_id : the id of the user
+ - latitude : the latitude of the logged location. 
+ - longitude : the longitude of the logged location. 
+ - captured_at : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
+ - captured_at_time : the date and time that the location was captured, without the timezone information. In the format yyyy-mm-ddThh:mm:ss
+ - captured_at_zone : the time zone of the location log, written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
+ - created_at: the date and time that the location was captured, always at the UTC+0 timezone. This is included to allow comparison of location logs taken in different time zones. 
+ - address: the street address of the logged location. 
+ - accuracy: the accuracy of the logged location, in metres.
+ - speed: the approximate speed, in metres per second, that the device was moving when location was logged.
+ - duration: the number of minutes that the device was at this location.
+ - battery_level: the battery level of the device when the location was logged.
+ - zones: an array of zones that this logged location falls into.
 
 ##3. ```GET``` api/app_users/id   
 
@@ -168,86 +204,93 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 {
   "app_user": {
     "id": 213,
-    "country_code": null,
-    "phone_number": null,
-    "email": null,
-    "name": null,
-    "avatar": null,
-    "photo": null,
-    "state": "offline",
-    "has_password": false,
-    "terms_accepted_at": null,
-    "email_verified": true,
-    "type": "AppUser",
+    "state": "online",
     "app_username": "JoeBloggs",
     "app_id": 459,
-    "company_id": 12
+    "company_id": 12,
+    "last_location": {
+          id = 4675,
+          user_id = 213
+          latitude = "-33.987699",
+          longitude = "18.483523",
+          captured_at = "2015-02-12T15:18:42+02:00",
+          captured_at_time = "2015-02-12T15:18:42",
+          captured_at_zone = "+02:00",
+          created_at = "2015-02-12T13:18:42+00:00",
+          address = "115 Garfield Rd, Claremont, Cape Town",
+          accuracy = "126.0",
+          speed = "0.0",
+          duration = 35,
+          battery_level = "43.0",
+          zones
+          [
+            {
+              id = "1",
+              name = "zone 1"
+            },
+            {
+              id = "2",
+              name = "zone 2"
+            }
+          ]
+        }
   }
 }
 ```
 
+##4. ```GET``` api/app_users/   
 
-##4. ```POST``` api/tracking   
-
-*creates a location tracking entry for an application user*
-
-###Form Parameters
-
- - **app_username** - *unique username*  (string, required)
-
- - **captured_at** - *Date of tracking entry*  (Time in iso8601 format ex: '2014-07-15T17:46:51+0800', required)
-
- - **latitude** - *Latitude*  (string, required)
-
- - **longitude** - *Longitude*  (string, required)
-
- - **address** - *Address. Can pass 2-letter locale code (such as 'en') if not found.*  (string, optional)
-
- - **accuracy** - *GPS accuracy in metres*  (float, optional)
- 
- - **speed** - *Moving speed (in meters/second)*  (float, optional)
-
- - **battery_level** - *Battery level (0.0-100.0)*  (float, optional)
+*returns details of a single application user, passing in the app_username*
 
 ###Example 
 
 ```
-curl -H "Authorization: access_token=_A7mrS5eiDxVb3AHfRwVfQ,access_token_secret=y8-xGymM1ta63Ra3arxRxQ_G9WZTazd3TUyw8dGkayM" --data "app_username=JoeBloggs&captured_at=2014-07-15T17:46:51+0800&latitude=33.91864735&longitude=18.41956561&address=19A Buitengracht St, Cape Town City Centre, Cape Town&accuracy=16.0&speed=0.0&battery_level=65.0" https://folr.com/api/tracking
+curl -H "Authorization: access_token=MsKxQs3xLEL-wHjQ1UXxPw,access_token_secret=NHpc18yYuqQFDZ7FzL3DsCs_8P-5KmxUf5tDYv9jxxx" -H "Accept: application/json" -H "Content-Type: application/json" https://folr.com/api/app_users/?app_username=JoeBloggs
 ```
 
-*(remember to include the WRITE token and token secret in the header)*
+*(remember to include the READ token and token secret in the header)*
 
-###Return JSON
+###Return JSON:
 
 **200 OK**
 
 ```
-    tracking_entry: {
-        user_id: 213,
-        captured_at_time: "2014-07-15T17:46:51",
-        captured_at_zone: "+08:00",
-        captured_at: "2014-07-15T17:46:51+08:00",
-        address: "19A Buitengracht St, Cape Town City Centre, Cape Town",
-        accuracy: 16.0,
-        speed: 0.0,
-        latitude: 33.91864735",
-        longitude: "18.41956561",
-        battery_level: 65.0
-    }
-```
-
-
-**400 Bad Request**
-
-```
 {
-  "error": "general_error",
-  "message": "Validation failed: Invalid token"
+  "app_user": {
+    "id": 213,
+    "state": "online",
+    "app_username": "JoeBloggs",
+    "app_id": 459,
+    "company_id": 12,
+    "last_location": {
+          id = 4675,
+          user_id = 213
+          latitude = "-33.987699",
+          longitude = "18.483523",
+          captured_at = "2015-02-12T15:18:42+02:00",
+          captured_at_time = "2015-02-12T15:18:42",
+          captured_at_zone = "+02:00",
+          created_at = "2015-02-12T13:18:42+00:00",
+          address = "115 Garfield Rd, Claremont, Cape Town",
+          accuracy = "126.0",
+          speed = "0.0",
+          duration = 35,
+          battery_level = "43.0",
+          zones
+          [
+            {
+              id = "1",
+              name = "zone 1"
+            },
+            {
+              id = "2",
+              name = "zone 2"
+            }
+          ]
+        }
+  }
 }
 ```
-
-
-
 
 
 ##5. ```GET``` api/tracking   
@@ -305,9 +348,6 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
   "message": ""
 }
 ```
-
-
-
 
 
 ##6. ```POST``` api/zones   

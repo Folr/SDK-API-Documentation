@@ -1,21 +1,21 @@
-# Folr Business Android SDK
+# Folr Android SDK
 
 ## Introduction
 
-The Folr Android SDK allows app developers to include location tracking functionality in their own apps with just a few lines of code. 
+The Folr Android SDK allows app developers to include location tracking functionality in their own Android apps with just a few lines of code. 
 
-All logged locations are automatically stored in the Folr cloud repository, and can be viewed either in the web dashboard, or via the Folr API.
+All logged locations are automatically stored in the Folr cloud repository, and location records can be viewed or retrieved either in the web dashboard, or via the Folr API.
 
 It requires the download of the FolrSDK .jar library file, and inclusion of this library in the Android project's dependancies.
 
 
 ## Installation
 
-1. Please download the Folr SDK Jar file [here](https://folr.com).
+1. Please download the Folr SDK .jar file [here](https://folr.com).
 
-2. Once downloaded, add the FolrSDK jar file as a dependancy to your android application.
+2. Once downloaded, add the FolrSDK .jar file as a dependancy to your android application.
 
-3. The Folr Android SDK depends on the *Google Play* library to be included in your Android application project. Instructions on how to download and include the Google Play library in your app can be found [here] (http://developer.android.com/google/play-services/setup.html).
+3. The Folr Android SDK requires that the *Google Play* library is included in your Android application project. Instructions on how to download and include the Google Play library in your app can be found [here] (http://developer.android.com/google/play-services/setup.html).
 
 4. Include the following permissions into your project's manifest XML file:
      * android.permission.INTERNET
@@ -47,7 +47,7 @@ It requires the download of the FolrSDK .jar library file, and inclusion of this
 
         <service android:name="com.folr.sdk.locationpoller.LocationPollerService" />
 
-6. If you are using Android Studio, please include the following libraries in the dependencies section of your project's build.gradle file:
+6. If you are using **Android Studio**, please include the following libraries in the dependencies section of your project's build.gradle file:
 
 *  com.loopj.android:android-async-http
 *  com.google.code.gson:gson
@@ -80,10 +80,10 @@ Code example:
 
 import com.folr.sdk.main.FolrSDK;
 
-private void activateFolrSDK(String readToken, String readTokenSecret, String writeToken, String writeTokenSecret){
+private void activateFolrSDK(){
 
     FolrSDK.activateSDK(getActivity().getApplicationContext(),
-                        readToken, readTokenSecret, writeToken, writeTokenSecret);
+                        "MsKxQs3xLEL-wHjQ1UXxPw", "NHpc18yYuqQFDZ7FzL3DsCs_8P-5KmxUf5tDYv9jxxx", "v-rwQ5yXz1GUskDseQ-pFQ", "7cgVnhoAPq1BPbh_wPUT8Hsf6ND3mg1ztDXREewHYGz");
 
 }
 
@@ -101,7 +101,7 @@ parameters expected:
 
 2. period : (int) The frequency in minutes that the device's location is polled and updated. Required.
 
-3. app_user : The application user's name that the location records are stored against. Application users are created in the web dashboard, or via API. Optional.
+3. app_user : This is the id or name of the user you wish to start tracking. App_users can created in the web dashboard, or via the API. *However*, if the app_user is not found, it will automatically be created. Required.
 
 ```
 
@@ -111,10 +111,10 @@ Code example:
 
 import com.folr.sdk.main.FolrSDK;
 
-private void startLocationPolling(int refreshTimeInMinutes, String appUserName){
+private void startLocationPolling(){
 
     FolrSDK.startLocationPolling(getActivity().getApplicationContext(),
-                        refreshTimeInMinutes, appUserName);
+                        15, "Employee 123");
 
 }
 
@@ -162,7 +162,7 @@ Code example:
 
 **************************
 
-import com.folr.sdk.main.FolrSDK;*
+import com.folr.sdk.main.FolrSDK;
 
 private void deactivateSDK(){
 
