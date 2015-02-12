@@ -8,9 +8,9 @@ All logged locations are automatically stored in the Folr cloud repository, and 
 
 ## ￼Installation
 
-1. Download the ** F​olrBusinessSDK.framework*​* [here](https://folr.com).
+1. Download the **F​olrBusinessSDK.framework*​** [here](https://folr.com).
 
-1. Add ** F​olrBusinessSDK.framework*​* into your project by dragging the
+1. Add **F​olrBusinessSDK.framework*​** into your project by dragging the
 FolrBusinessSDK.framework from Finder and dropping it inside your project.
 
 2. Add Apple’s **C​oreLocation.framework​** into your project by going to 
@@ -27,8 +27,8 @@ For example *“App ABC wants to access your location in the background to help 
 ## Usage
 
 - In your AppDelegate.m file import **<​FolrBusinessSDK/FolrBusinessSDK.h>**
-and in the method ­​**-application:didFinishLaunchingWithOptions:** 
-a​dd this line 
+
+- In the method ­​**-application:didFinishLaunchingWithOptions:** a​dd this line 
 
 ``` 
 [FolrBusinessSDK initializeWithAPIKey:@"your app WRITE token":@"your application WRITE token secret"];

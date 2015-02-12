@@ -14,18 +14,17 @@ Each application that you create contains two sets of tokens:
 * a token and token secret for **writing** data to the API
 * a token and token secret for **reading** data from the API.
 
-#### example of a token:
+#### Example of a token:
 ``` 
 3LmTyBKfFAgFei3oAf4vRg
 ```
 
-#### example of token secret:
+#### Example of token secret:
 ``` 
 yoh-CQemDj8dMndTm79xfEdf63cJ94TzeTqdcGXU3kg
 ```
 
 Each application consists of one or more **users**, representing each user whose locations is tracked via the API. 
-
 Adding application users can either be done inside the web dashboard, or via the API methods.
 
 ##API Methods
@@ -37,7 +36,7 @@ Adding application users can either be done inside the web dashboard, or via the
 
 ###Form Parameters
 
- - **app_username**        - *unique username*  (string, required)
+ - **app_username**        - *the application user's name/id*  (string, required)
 
 
 ###Example 
@@ -173,6 +172,10 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 
 *returns details of a single application user*
 
+###GET Parameters
+
+ - **id**        - *the Folr id of the application user*  (int, required)
+
 ###Example 
 
 ```
@@ -226,6 +229,10 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 ##4. ```GET``` api/app_users/   
 
 *returns details of a single application user, passing in the app_username*
+
+###GET Parameters
+
+ - **app_username**        - *the application user's name/id*  (string, required)
 
 ###Example 
 
@@ -281,6 +288,14 @@ curl -H "Authorization: access_token=MsKxQs3xLEL-wHjQ1UXxPw,access_token_secret=
 ##5. ```GET``` api/tracking   
 
 *returns a list of locations for a particular application user*
+
+###GET Parameters
+
+ - **from**        - *the from-date, in iso8601 format format *  (string, required)
+ 
+ - **to**        - *the to-date, in iso8601 format format *  (string, required)
+
+- **app_username**        - *the application user's name/id*  (string, required)
 
 ###Example 
 
