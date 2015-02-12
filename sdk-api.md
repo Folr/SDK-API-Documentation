@@ -75,7 +75,7 @@ app_user:
 *app_user fields explained:*
  - **id** : the Folr id of the app user
  - **state** : "online" means the user's location is currently being tracked; "offline" means the user is not currently being tracked
- - **app_username** : the application user's unique name or ID
+ - **app_username** : the application user's name/ID
  - **last_location** : the user's latest tracked location
  - **company_id** : the id of the company that the application user belongs to.
 
@@ -163,7 +163,7 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
  - **created_at** : the date and time that the location was captured, always at the UTC+0 timezone. This is included to allow comparison of location logs taken in different time zones. 
  - **address** : the street address of the logged location. 
  - **accuracy** : the accuracy of the logged location, in metres.
- - **speed** : the approximate speed, in metres per second, that the device was moving when location was logged.
+ - **speed** : the speed, in metres per second, that the device was travelling when location was logged.
  - **duration** : the number of minutes that the device was at this location.
  - **battery_level** : the battery level of the device when the location was logged.
  - **zones** : an array of zones that this logged location falls into.
@@ -228,7 +228,7 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 
 ##4. ```GET``` api/app_users/   
 
-*returns details of a single application user, passing in the app_username*
+*returns details of a single application user*
 
 ###GET Parameters
 
@@ -291,9 +291,9 @@ curl -H "Authorization: access_token=MsKxQs3xLEL-wHjQ1UXxPw,access_token_secret=
 
 ###GET Parameters
 
- - **from**        - *the from-date, in iso8601 format format *  (string, required)
+ - **from**        - *the from-date, in iso8601 format format*  (string, required)
  
- - **to**        - *the to-date, in iso8601 format format *  (string, required)
+ - **to**        - *the to-date, in iso8601 format format*  (string, required)
 
 - **app_username**        - *the application user's name/id*  (string, required)
 
