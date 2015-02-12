@@ -11,37 +11,22 @@ To use the Folr API, you first need to create one or more Applications in the [F
 
 Each application that you create contains two sets of tokens:
 
-* a token and secret for **writing** data to the API
-* a token and secret for **reading** data from the API.
+* a token and token secret for **writing** data to the API
+* a token and token secret for **reading** data from the API.
 
-## Example of application tokens:
-
-#### read token:
+#### example of a token:
 ``` 
 3LmTyBKfFAgFei3oAf4vRg
 ```
 
-#### read token secret:
+#### example of token secret:
 ``` 
 yoh-CQemDj8dMndTm79xfEdf63cJ94TzeTqdcGXU3kg
 ```
 
-#### write token:
-``` 
-cXdGvmqgvxgo4_T_P_edft
-```
+Each application consists of one or more **users**, representing each user whose locations is tracked via the API. 
 
-#### write token secret:
-``` 
-yCQ_jbj5xxcyBrz8z5xEcbyRTWUNxV3rAqrdGHSHw9ao
-```
-
-*(Please note these tokens above are examples only, to retrieve your application's tokens, please log into the web dashboard at [Folr Dashboard](https://folr.com/)).*
-
-Each application then consists of one or more application **users**, representing each user whose locations are tracked via the API. 
-
-Adding application users can either be done inside the web dashboard, or via the API.
-
+Adding application users can either be done inside the web dashboard, or via the API methods.
 
 ##API Methods
 
@@ -89,11 +74,11 @@ app_user:
 ```
 
 *app_user fields explained:*
- - id : the Folr id of the app user
- - state : "online" means the user's location is currently being tracked; "offline" means the user is not currently being tracked
- - app_username : the application user's unique name or ID
- - last_location : the user's latest tracked location
- - company_id : the id of the company that the application user belongs to.
+ - **id** : the Folr id of the app user
+ - **state** : "online" means the user's location is currently being tracked; "offline" means the user is not currently being tracked
+ - **app_username** : the application user's unique name or ID
+ - **last_location** : the user's latest tracked location
+ - **company_id** : the id of the company that the application user belongs to.
 
 ##2. ```GET``` api/app_users   
 
@@ -169,20 +154,20 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 ```
 
 *last_location fields explained:*
- - id : the location log id
- - user_id : the id of the user
- - latitude : the latitude of the logged location. 
- - longitude : the longitude of the logged location. 
- - captured_at : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
- - captured_at_time : the date and time that the location was captured, without the timezone information. In the format yyyy-mm-ddThh:mm:ss
- - captured_at_zone : the time zone of the location log, written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
- - created_at: the date and time that the location was captured, always at the UTC+0 timezone. This is included to allow comparison of location logs taken in different time zones. 
- - address: the street address of the logged location. 
- - accuracy: the accuracy of the logged location, in metres.
- - speed: the approximate speed, in metres per second, that the device was moving when location was logged.
- - duration: the number of minutes that the device was at this location.
- - battery_level: the battery level of the device when the location was logged.
- - zones: an array of zones that this logged location falls into.
+ - **id** : the location log id
+ - **user_id** : the Folr id of the user
+ - **latitude** : the latitude of the logged location. 
+ - **longitude** : the longitude of the logged location. 
+ - **captured_at** : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
+ - **captured_at_time** : the date and time that the location was captured, without the timezone information. In the format yyyy-mm-ddThh:mm:ss
+ - **captured_at_zone** : the time zone of the location log, written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
+ - **created_at** : the date and time that the location was captured, always at the UTC+0 timezone. This is included to allow comparison of location logs taken in different time zones. 
+ - **address** : the street address of the logged location. 
+ - **accuracy** : the accuracy of the logged location, in metres.
+ - **speed** : the approximate speed, in metres per second, that the device was moving when location was logged.
+ - **duration** : the number of minutes that the device was at this location.
+ - **battery_level** : the battery level of the device when the location was logged.
+ - **zones** : an array of zones that this logged location falls into.
 
 ##3. ```GET``` api/app_users/id   
 

@@ -13,7 +13,7 @@ It requires the download of the FolrSDK .jar library file, and inclusion of this
 
 1. Please download the Folr SDK .jar file [here](https://folr.com).
 
-2. Once downloaded, add the FolrSDK .jar file as a dependancy to your android application.
+2. Once downloaded, add the FolrSDK .jar file as a dependancy in your Android application.
 
 3. The Folr Android SDK requires that the *Google Play* library is included in your Android application project. Instructions on how to download and include the Google Play library in your app can be found [here] (http://developer.android.com/google/play-services/setup.html).
 
