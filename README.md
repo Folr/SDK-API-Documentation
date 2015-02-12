@@ -6,11 +6,11 @@ This set of documentation includes:
 2. [iOS SDK Documentation](ios-sdk.md)
 
 # About Folr
-[Folr](http://folr.com/) is a smartphone and web-based solution that provides a simple and efficient way of accurately tracking employees' geographical movements. It consists of a smartphone application, and a web-based administrative dashboard.
+[Folr](http://folr.com/) is a smartphone and web-based solution that provides a simple and efficient way of accurately tracking users' geographical locations. It consists of a smartphone application, and a web-based administrative dashboard.
 
 # About Folr API
 
-The Folr API allows application developers to harness the power of Folr's location tracking functionality in their own smarphone apps.
+The Folr API allows application developers to harness the power of Folr's location tracking functionality directly in their own smarphone apps.
 
 Smartphone applications can track the device's location simply through the inclusion of the Folr SDK in the application project.
 

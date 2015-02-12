@@ -7,7 +7,7 @@ There are two important elements to the Folr API:
 
 #Invoking the API: application tokens
 
-In order to use the Folr API, you need to create one or more Applications in the [Folr Business Dashboard](https://folr.com/) via the 'Applications' menu in the left. 
+To use the Folr API, you first need to create one or more Applications in the [Folr Admin Dashboard](https://folr.com/) via the 'Applications' menu in the left. 
 
 Each application that you create contains two sets of tokens:
 
