@@ -123,7 +123,7 @@ private void startLocationPolling(){
 
 ### 3. stopLocationPolling
 
-####Stops location tracking on the device.
+####Stops location tracking on the device
 
 ```
 parameters expected:
@@ -145,36 +145,3 @@ private void stopLocationPolling(){
 }
 
 ****************************
-
-
-### 4. deactivateSDK
-
-####De-activates the Folr SDK on the device
-
-``` 
-parameters expected:
-
-1. context : (Context). The context of the activity or fragment calling this method. Required.
-
-```
-
-Code example:
-
-**************************
-
-import com.folr.sdk.main.FolrSDK;
-
-private void deactivateSDK(){
-
-    FolrSDK.deactivateSDK(getActivity());
-
-}
-
-****************************
-
-
-
-
-
-
-
