@@ -166,9 +166,9 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
  - **user_id** : the Folr id of the user
  - **latitude** : the latitude of the logged location. 
  - **longitude** : the longitude of the logged location. 
- - **captured_at** : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as UTC offset ([http://en.wikipedia.org/wiki/UTC_offset]).
+ - **captured_at** : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as [UTC offset](http://en.wikipedia.org/wiki/UTC_offset).
  - **captured_at_time** : the date and time that the location was captured, without the timezone information. In the format yyyy-mm-ddThh:mm:ss
- - **captured_at_zone** : the time zone of the location log, written as UTC offset ([http://en.wikipedia.org/wiki/UTC_offset]).
+ - **captured_at_zone** : the time zone of the location log, written as [UTC offset](http://en.wikipedia.org/wiki/UTC_offset).
  - **created_at** : the date and time that the location was captured, always at the UTC+0 timezone. This is included to allow comparison of location logs taken in different time zones. 
  - **address** : the street address of the logged location. 
  - **accuracy** : the accuracy of the logged location, in metres.
