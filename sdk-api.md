@@ -166,9 +166,9 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
  - **user_id** : the Folr id of the user
  - **latitude** : the latitude of the logged location. 
  - **longitude** : the longitude of the logged location. 
- - **captured_at** : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
+ - **captured_at** : the date and time that the location was captured, in the format yyyy-mm-ddThh:mm:ss[timezone]. The timezone portion is written as UTC offset ([http://en.wikipedia.org/wiki/UTC_offset]).
  - **captured_at_time** : the date and time that the location was captured, without the timezone information. In the format yyyy-mm-ddThh:mm:ss
- - **captured_at_zone** : the time zone of the location log, written as [http://en.wikipedia.org/wiki/UTC_offset](UTC offset).
+ - **captured_at_zone** : the time zone of the location log, written as UTC offset ([http://en.wikipedia.org/wiki/UTC_offset]).
  - **created_at** : the date and time that the location was captured, always at the UTC+0 timezone. This is included to allow comparison of location logs taken in different time zones. 
  - **address** : the street address of the logged location. 
  - **accuracy** : the accuracy of the logged location, in metres.
@@ -309,7 +309,7 @@ curl -H "Authorization: access_token=MsKxQs3xLEL-wHjQ1UXxPw,access_token_secret=
 ###Example 
 
 ```
-curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://folr.com/api/tracking?from=2014-07-15T08:00:00+08:00&to=2014-07-15T17:46:51+08:00
+curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=s7EW8kUjxxCCf4mi6a1SDZgAGqqK11aZCCAV_QzRSio" -H "Accept: application/json" -H "Content-Type: application/json" https://folr.com/api/tracking?from=2014-07-15T08:00:00+08:00&to=2014-07-15T17:46:51+08:00&app_username=JoeBloggs
 ```
 
 *(remember to include the READ token and token secret in the header)*
@@ -367,9 +367,9 @@ curl -H "Authorization: access_token=xCBxHdPAp7RdCpVGUrQCeg,access_token_secret=
 
  - **name** - *Name of zone*  (string, required)
 
- - **latitude** - *Latitude of zone center*  (string, required)
+ - **latitude** - *Latitude of zone's center*  (string, required)
 
- - **longitude** - *Longitude of zone center*  (string, required)
+ - **longitude** - *Longitude of zone's center*  (string, required)
 
  - **radius** - *Radius of zone in metres*  (float, required)
 
