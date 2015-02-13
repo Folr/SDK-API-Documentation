@@ -140,7 +140,7 @@ import com.folr.sdk.main.FolrSDK;
 
 private void stopLocationPolling(){
 
-    FolrSDK.stopLocationPolling(getActivity());
+    FolrSDK.stopLocationPolling(getActivity().getApplicationContext());
 
 }
 
