@@ -2,16 +2,17 @@
 
 ## Introduction
 
-The Folr Android SDK allows app developers to include location tracking functionality in their own Android apps with just a few lines of code. 
+The Folr Android SDK allows developers to include location tracking functionality in their own Android apps with just a few lines of code. 
 
-All logged locations are automatically stored in the Folr cloud repository, and location records can be viewed or retrieved either in the web dashboard, or via the Folr API.
+All logged locations are stored in the Folr cloud repository, and location records can be viewed or retrieved either in the web dashboard, or via the Folr API.
 
 It requires the download of the FolrSDK .jar library file, and inclusion of this library in the Android project's dependancies.
 
+An **Android Studio** demo application, demonstrating functionality of the SDK, can be found [here](https://github.com/Folr/Folr-Android-SDK-Demo).
 
 ## Installation
 
-1. Please download the Folr SDK .jar file [here](https://folr.com).
+1. Download the Folr SDK .jar file [here](https://folr.com).
 
 2. Once downloaded, add the FolrSDK .jar file as a dependancy in your Android application.
 

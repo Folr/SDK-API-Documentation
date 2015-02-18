@@ -10,9 +10,9 @@ This set of documentation includes:
 
 # About Folr API
 
-The Folr API allows application developers to harness the power of Folr's location tracking functionality directly in their own smarphone apps.
+The Folr API allows developers to utilize Folr's location tracking functionality directly in their own smarphone apps.
 
-Smartphone applications can track the device's location simply through the inclusion of the Folr SDK in the application project.
+The API should be used in conjunction with one of the SDK's, avalailable for Android and iOS.
 
 # About Folr Android and iOS SDK
 
